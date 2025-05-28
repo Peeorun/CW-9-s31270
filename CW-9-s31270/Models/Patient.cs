@@ -5,7 +5,7 @@ namespace CW_9_s31270.Models;
 
 public class Patient
 {
-    [Key]  // Upewnij się, że to jest
+    [Key]
     public int IdPatient { get; set; }
     
     [Required]

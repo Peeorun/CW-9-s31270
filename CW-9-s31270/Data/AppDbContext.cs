@@ -20,25 +20,21 @@ namespace CW_9_s31270.Data
     {
         base.OnModelCreating(modelBuilder);
         
-        // Konfiguracja klucza złożonego dla PrescriptionMedicament
         modelBuilder.Entity<PrescriptionMedicament>()
             .HasKey(pm => new { pm.IdMedicament, pm.IdPrescription });
         
-        // Konfiguracja relacji Patient -> Prescription
         modelBuilder.Entity<Prescription>()
             .HasOne(p => p.Patient)
             .WithMany(pt => pt.Prescriptions)
             .HasForeignKey(p => p.IdPatient)
             .OnDelete(DeleteBehavior.Restrict);
         
-        // Konfiguracja relacji Doctor -> Prescription
         modelBuilder.Entity<Prescription>()
             .HasOne(p => p.Doctor)
             .WithMany(d => d.Prescriptions)
             .HasForeignKey(p => p.IdDoctor)
             .OnDelete(DeleteBehavior.Restrict);
         
-        // Konfiguracja relacji many-to-many Prescription <-> Medicament
         modelBuilder.Entity<PrescriptionMedicament>()
             .HasOne(pm => pm.Prescription)
             .WithMany(p => p.PrescriptionMedicaments)
@@ -51,7 +47,6 @@ namespace CW_9_s31270.Data
             .HasForeignKey(pm => pm.IdMedicament)
             .OnDelete(DeleteBehavior.Restrict);
         
-        // Seed data
         var doctors = new List<Doctor>
         {
             new() { IdDoctor = 1, FirstName = "Jan", LastName = "Kowalski" },

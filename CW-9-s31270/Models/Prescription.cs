@@ -4,7 +4,7 @@ namespace CW_9_s31270.Models;
 
 public class Prescription
 {
-    [Key]  // Upewnij się, że to jest
+    [Key]
     public int IdPrescription { get; set; }
     
     [Required]

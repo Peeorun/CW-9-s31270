@@ -6,7 +6,7 @@ namespace CW_9_s31270.Models;
 
 public class Doctor
 {
-    [Key]  // Dodaj ten atrybut
+    [Key]
     public int IdDoctor { get; set; }
     
     [Required]
